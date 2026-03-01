@@ -1,4 +1,5 @@
 export interface Video {
+    id: string;
     publicId: string;
     title: string;
     duration: number;

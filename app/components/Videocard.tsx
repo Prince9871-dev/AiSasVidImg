@@ -27,24 +27,22 @@ const Videocard: React.FC<VideocardProps> = ({ video, onDownload }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [previewError, setPreviewError] = useState(false);
 
-  const getThumbnailUrl = useCallback((publicId: string) => {
-    return getCldImageUrl({
-      src: publicId,
-      width: 300,
-      height: 200,
-      crop: "fill",
-      gravity: "auto",
-      fetchFormat: "auto",
-      quality: "auto",
-      type: "video",
-      assetType: "video",
-    });
-  }, []);
+const getThumbnailUrl = useCallback((publicId: string) => {
+  return getCldImageUrl({
+    src: publicId,
+    width: 300,
+    height: 200,
+    crop: "fill",
+    gravity: "auto",
+    format: "jpg",
+    quality: "auto",
+  });
+}, []);
 
   const getPreviewVideoUrl = useCallback((publicId: string) => {
     return getCldVideoUrl({
       src: publicId,
-      rawTransformation: [
+      rawTransformations: [
         "e_preview:duration_15:max_seg_9:min_seg_dur_1",
       ],
     });
